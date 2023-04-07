@@ -20,7 +20,7 @@ function addMessage(message, sender) {
     }
   }
   
-
+  //Responds user with default responses
   const getResponse = (message) => {
     const responses = [
       "I'm sorry, I didn't understand. Can you please rephrase?",
@@ -40,13 +40,13 @@ function addMessage(message, sender) {
     return response;
   }
   
-
+// GPT3.5 generated response
 const getOpenAIResponse = async (prompt) => {
   const response = await fetch('https://api.openai.com/v1/engines/gpt-3.5-turbo/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + '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'
+      'Authorization': 'Bearer ' + process.env.OPENAI_API_KEY
     },
     body: JSON.stringify({
       prompt: prompt,
